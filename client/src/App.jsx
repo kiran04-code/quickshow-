@@ -1,14 +1,36 @@
 import { useState } from 'react'
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useLocation } from "react-router-dom"
 import './App.css'
 import Homepage from './pages/Homepage';
+import MoviesDetails from './pages/moviesDetails';
+import Movies from './pages/Movies';
+import SeatsLayout from './pages/SeatsLayout';
+import MyBokking from './pages/MyBokking';
+import Favorite from './pages/Favorite';
+import Navbar from './components/navbar';
+import Footer from './components/Footer';
+import {Toaster} from "react-hot-toast"
+
 function App() {
+  const isAdmin = useLocation().pathname.startsWith("/admin")
+
   return (
     <div>
+  <Toaster/>
+     {
+      isAdmin ? null: <Navbar/>
+     }
       <Routes>
         <Route path='/' element={<Homepage/>} />
-
+        <Route path='/MoviesDetails/:id' element={<MoviesDetails/>} />
+        <Route path='/Movies' element={<Movies/>} />
+        <Route path='/SeatsLayout/:id/:date' element={<SeatsLayout/>} />
+        <Route path='/MyBokking' element={<MyBokking/>} />
+        <Route path='/Favorite' element={<Favorite/>} />
       </Routes>
+     {
+      isAdmin ? null: <Footer/>
+     }
     </div>
   )
 }
