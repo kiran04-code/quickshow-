@@ -1,14 +1,16 @@
 import { useState } from 'react'
-
+import { Route, Routes } from "react-router-dom"
 import './App.css'
-
+import Homepage from './pages/Homepage';
 function App() {
-
   return (
     <div>
-      <h1 className='bg-red-500'>we</h1>
+      <Routes>
+        <Route path='/' element={<Homepage/>} />
+
+      </Routes>
     </div>
   )
 }
 
-export default App
+export default App;
