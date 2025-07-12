@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom'
 import { assets } from '../assets/assets'
 import { MenuIcon, SearchIcon, TicketPlus, XIcon } from "lucide-react"
 import {  useClerk, UserButton, useUser } from '@clerk/clerk-react'
+import { useAuth } from '../context/auth'
 import { useNavigate } from 'react-router-dom'
 const Navbar = () => {
     const [isopen,setIsOpen] = useState(false)
+     const {datasearch,setDataSearch} = useAuth()
     const {user} = useUser()
     const naviagete  = useNavigate()
      const {openSignIn} = useClerk()
-    
+
     return (
         <div className='fixed top-0 left-0 z-50 flex w-full items-center justify-between px-6 md:px-16 lg:px-16 py-8'>
             <Link to="/" className='max-md:flex-1' >
@@ -26,12 +28,16 @@ const Navbar = () => {
                 <Link onClick={()=>{scrollTo(0,0),setIsOpen(false)}} to="/Movies"> Movies </Link>
                 <Link onClick={()=>{scrollTo(0,0),setIsOpen(false)}} to="#"> Theaters </Link>
                 <Link onClick={()=>{scrollTo(0,0),setIsOpen(false)}} to="/Favorite"> Favorite </Link>  
-                <Link onClick={()=>{scrollTo(0,0),setIsOpen(false)}} to="/Favorite"> Relea </Link>  
+                <Link onClick={()=>{scrollTo(0,0),setIsOpen(false)}} to="/Favorite"> Releases </Link>  
             </div>
 
             <div className='flex items-center gap-8'>
-                <SearchIcon className='max-md:hidden w-6 h-6 cursor-pointer' />
-            
+             
+                <input value={datasearch} onClick={()=>{ naviagete("/movies");scrollTo(0,0)}}  onChange={(e)=>setDataSearch(e.target.value)} type="text" placeholder='Search Movies..' className='max-md:hidden  p-2 border-3  border-primary    backdrop-blur-3xl rounded-2xl'  />
+               {/* <button type='submit' className='bg-primary p-2 rounded-xl'> 
+                 <SearchIcon className='max-md:hidden w-6 h-6 cursor-pointer' />
+              </button> */}
+    
                {
                 user ? <UserButton>
                     <UserButton.MenuItems>
