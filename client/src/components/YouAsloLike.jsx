@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/auth';
 import BlurCircle from '../components/Reused';
 
-const Favorite = () => {
+const YouAsloLike = () => {
   const { datasearch } = useAuth();
   const navigate = useNavigate();
   const filtermovie = dummyShowsData.filter((data) =>
@@ -15,7 +15,7 @@ const Favorite = () => {
 
   return (
     filtermovie && filtermovie ? (<div className='px-4 md:px-12 lg:px-20 py-10'>
-      <h1 className='text-3xl md:text-4xl font-bold text-white mb-2 mt-25'>All Favorite</h1>
+      <h1 className='text-3xl md:text-4xl font-bold text-white mb-2 mt-25'>You May Also Like</h1>
       <div className='w-24 h-1 rounded-xl bg-primary mb-8'></div>
 
       <div className='grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
@@ -63,4 +63,4 @@ const Favorite = () => {
   );
 };
 
-export default Favorite;
+export default YouAsloLike;

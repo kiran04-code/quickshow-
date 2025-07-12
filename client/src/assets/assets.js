@@ -33,7 +33,7 @@ export const dummyTrailers = [
     },
 ]
 
-const dummyCastsData = [
+export const dummyCastsData = [
     { "name": "Milla Jovovich", "profile_path": "https://image.tmdb.org/t/p/original/usWnHCzbADijULREZYSJ0qfM00y.jpg", },
     { "name": "Dave Bautista", "profile_path": "https://image.tmdb.org/t/p/original/snk6JiXOOoRjPtHU5VMoy6qbd32.jpg", },
     { "name": "Arly Jover", "profile_path": "https://image.tmdb.org/t/p/original/zmznPrQ9GSZwcOIUT0c3GyETwrP.jpg", },
@@ -61,6 +61,7 @@ export const dummyShowsData = [
         "overview": "A queen sends the powerful and feared sorceress Gray Alys to the ghostly wilderness of the Lost Lands in search of a magical power, where she and her guide, the drifter Boyce, must outwit and outfight both man and demon.",
         "poster_path": "https://image.tmdb.org/t/p/original/dDlfjR7gllmr8HTeN6rfrYhTdwX.jpg",
         "backdrop_path": "https://image.tmdb.org/t/p/original/op3qmNhvwEvyT7UFyPbIfQmKriB.jpg",
+        "tailer_path":"https://youtu.be/CMyrp5Vk3mU?si=MVODvnzNrfQdAXfF",
         "genres": [
             { "id": 28, "name": "Action" },
             { "id": 14, "name": "Fantasy" },
@@ -81,6 +82,7 @@ export const dummyShowsData = [
         "overview": "One year after her sister Melanie mysteriously disappeared, Clover and her friends head into the remote valley where she vanished in search of answers. Exploring an abandoned visitor center, they find themselves stalked by a masked killer and horrifically murdered one by one...only to wake up and find themselves back at the beginning of the same evening.",
         "poster_path": "https://image.tmdb.org/t/p/original/juA4IWO52Fecx8lhAsxmDgy3M3.jpg",
         "backdrop_path": "https://image.tmdb.org/t/p/original/icFWIk1KfkWLZnugZAJEDauNZ94.jpg",
+        "tailer_path":"https://youtu.be/2b3vBaINZ7w?si=tViexIV4nTmuq--e",
         "genres": [
             { "id": 27, "name": "Horror" },
             { "id": 9648, "name": "Mystery" }
@@ -100,6 +102,7 @@ export const dummyShowsData = [
         "overview": "The wildly funny and touching story of a lonely Hawaiian girl and the fugitive alien who helps to mend her broken family.",
         "poster_path": "https://image.tmdb.org/t/p/original/mKKqV23MQ0uakJS8OCE2TfV5jNS.jpg",
         "backdrop_path": "https://image.tmdb.org/t/p/original/7Zx3wDG5bBtcfk8lcnCWDOLM4Y4.jpg",
+        "tailer_path":"https://youtu.be/VWqJifMMgZE?si=p_PcAi4f2vBfaU-B",
         "genres": [
             { "id": 10751, "name": "Family" },
             { "id": 35, "name": "Comedy" },
@@ -120,6 +123,7 @@ export const dummyShowsData = [
         "overview": "When a drug heist swerves lethally out of control, a jaded cop fights his way through a corrupt city's criminal underworld to save a politician's son.",
         "poster_path": "https://image.tmdb.org/t/p/original/ubP2OsF3GlfqYPvXyLw9d78djGX.jpg",
         "backdrop_path": "https://image.tmdb.org/t/p/original/65MVgDa6YjSdqzh7YOA04mYkioo.jpg",
+        "tailer_path":"https://youtu.be/6txjTWLoSc8?si=ryxalGOP1GaZaZOX",
         "genres": [
             { "id": 28, "name": "Action" },
             { "id": 80, "name": "Crime" },
@@ -140,6 +144,7 @@ export const dummyShowsData = [
         "overview": "Four misfits find themselves struggling with ordinary problems when they are suddenly pulled through a mysterious portal into the Overworld: a bizarre, cubic wonderland that thrives on imagination. To get back home, they'll have to master this world while embarking on a magical quest with an unexpected, expert crafter, Steve.",
         "poster_path": "https://image.tmdb.org/t/p/original/yFHHfHcUgGAxziP1C3lLt0q2T4s.jpg",
         "backdrop_path": "https://image.tmdb.org/t/p/original/2Nti3gYAX513wvhp8IiLL6ZDyOm.jpg",
+        "tailer_path":"https://youtu.be/8vfdAqMlhL0?si=mG0n8xQkB14TE0LG",
         "genres": [
             { "id": 10751, "name": "Family" },
             { "id": 35, "name": "Comedy" },
@@ -161,6 +166,7 @@ export const dummyShowsData = [
         "overview": "Ethan Hunt and team continue their search for the terrifying AI known as the Entity — which has infiltrated intelligence networks all over the globe — with the world's governments and a mysterious ghost from Hunt's past on their trail. Joined by new allies and armed with the means to shut the Entity down for good, Hunt is in a race against time to prevent the world as we know it from changing forever.",
         "poster_path": "https://image.tmdb.org/t/p/original/z53D72EAOxGRqdr7KXXWp9dJiDe.jpg",
         "backdrop_path": "https://image.tmdb.org/t/p/original/1p5aI299YBnqrEEvVGJERk2MXXb.jpg",
+         "tailer_path":"https://youtu.be/NOhDyUmT9z0?si=4rB2ZJPbvmUMInlp",
         "genres": [
             { "id": 28, "name": "Action" },
             { "id": 12, "name": "Adventure" },
@@ -181,6 +187,7 @@ export const dummyShowsData = [
         "overview": "After finding themselves ensnared in a death trap, seven disillusioned castoffs must embark on a dangerous mission that will force them to confront the darkest corners of their pasts.",
         "poster_path": "https://image.tmdb.org/t/p/original/m9EtP1Yrzv6v7dMaC9mRaGhd1um.jpg",
         "backdrop_path": "https://image.tmdb.org/t/p/original/rthMuZfFv4fqEU4JVbgSW9wQ8rs.jpg",
+        "tailer_path":"https://youtu.be/XerphmT2HI4?si=Ph0qwAKeKHkLAwCi",
         "genres": [
             { "id": 28, "name": "Action" },
             { "id": 878, "name": "Science Fiction" },
