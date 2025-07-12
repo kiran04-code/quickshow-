@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { dummyDateTimeData, dummyShowsData } from '../assets/assets'
+import { assets, dummyDateTimeData, dummyShowsData } from '../assets/assets'
 import { useState } from 'react'
 import Loading from '../components/Loading'
 import { ClockIcon } from 'lucide-react'
 import ioTime from '../lib/ioTime'
+import BlurCircle from '../components/Reused'
+import toast from 'react-hot-toast'
 
 const SeatsLayout = () => {
     const { date, id } = useParams()
     const navigate = useNavigate()
+    const groupsRow = [["A","B"],["C","D"],["E","F"],["G","H"],["I","J"]]
     const [selectedSeats, setselectedSeats] = useState([])
     const [selectedTime, setsselectedTime] = useState(null)
   console.log(selectedTime)
@@ -24,11 +27,35 @@ const SeatsLayout = () => {
         }
 
     }
+   const handleSeadtfunction = (seatId)=>{
+    if(!selectedTime){
+      return toast("Please Select the Time First")
+    }
+    if(!selectedSeats.includes(seatId) && selectedSeats.length>4){
+       return toast(" Your Can Only Select 5 Seats")
+    }
+    setselectedSeats(prv=>prv.includes(seatId) ? prv.filter(seats=>seats != seatId):[...prv,seatId])
+
+   }
+    const renserSeats = (row,count=9)=>(
+      <div key={row} className='flex gap-2 mt-2 '>
+        <div>
+           { Array.from({length:count}, (_,i)=>{
+            const seatId = `${row}${i+1}`;
+            return(
+              <button onClick={()=>setselectedSeats(seatId)} className={`h-8 w-8 ml-2 rounded border border-primary/60 cursor-pointer gap-2 ${selectedSeats.includes(seatId) && "bg-primary text-white"}`}>
+              {seatId}
+              </button>
+            )
+           })}
+        </div>
+      </div>
+    )
     useEffect(() => {
         getshowData()
     }, [id])
     return show ? (
-        <div className='flex flex-col md:flex-row px-6 md:px-16 lg:px-16 py-30 md:pt-50'>
+        <div className='flex flex-col md:flex-row px-6 md:px-16 lg:px-16 py-30 md:pt-50 gap-50 '>
           
           <div className=' w-60 bg-primary/10 border-primary/20 rounded-lg py-10 h-max md::sticky md:top-30 '>
            <p className='text-lg px-6  font-bold '>Available Timings</p>
@@ -44,12 +71,19 @@ const SeatsLayout = () => {
            </div>
           </div>
 
-          <div>
-
+          <div className='relative flex-1 flex-col flex items-center max-md:mt-16 justify-center '>
+              <BlurCircle top="0" right='0'/>
+            
+              <h1 className='text-2xl font-semibold mb-4'>
+                Select Your Seats  </h1>
+                <img src={assets.screenImage} alt="" className='' />
+                <p className='text-gray-400 text-sm mb-6'>SCREEN SIDE </p>
+                <div className='flex- flex-col items-center mt-10 text-xs text-gray-300 '>
+                   <div className=''>
+                    {groupsRow[0].map(row=>renserSeats(row)) }
+                   </div>
+                </div>
           </div>
-  <div>
-
-  </div>
         </div>
     ) : <div>
         <div>
