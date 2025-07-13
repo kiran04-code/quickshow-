@@ -1,8 +1,11 @@
-
+import { useState } from "react";
+import { Link } from "react-router-dom";
 const Sidebar = () => {
+  const [seltedTag,setSeltedTag] = useState()
+   
   const sidebarLinks = [
-
-    { name: "DashBoad", path: "/", },
+   
+    { name: "DashBoad", path: "/admin", },
 
     { name: "Add Shows", path: "/admin/add-show", },
 
@@ -21,13 +24,13 @@ const Sidebar = () => {
 
         {sidebarLinks.map((item, index) => (
 
-          <a href={item.path} key={index}
-
+          <Link to={item.path} key={index}
+                onClick={(()=>setSeltedTag(item.name))}
             className={`flex items-center py-3 px-4 gap-3 
 
-                            ${index === 0 ? "border-r-4 md:border-r-[6px] bg-primary/8 border-primary/25 text-indigo-500"
+                            ${seltedTag === item.name ? "border-r-4 md:border-r-[6px] bg-primary/8 border-primary/25 text-indigo-500"
 
-                : " border-white text-gray-700"
+                : " hover:bg-primary/8 border-white text-gray-700"
 
               }`
 
@@ -39,7 +42,7 @@ const Sidebar = () => {
 
             <p className="md:block hidden text-amber-50 text-center">{item.name}</p>
 
-          </a>
+          </Link>
 
         ))}
 
