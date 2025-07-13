@@ -84,7 +84,7 @@ const openvideomodel = (videourl,videotitle)=>{
            
            <a href="#dataselect">
 
-             <button className='bg-primary text-white p-3 px-5 rounded-2xl flex items-center gap-2'>
+             <button on className='bg-primary text-white p-3 px-5 rounded-2xl flex items-center gap-2'>
               <TicketIcon /> Buy Tickets
             </button>
            </a>

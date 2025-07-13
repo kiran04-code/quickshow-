@@ -38,12 +38,12 @@ const SeatsLayout = () => {
 
    }
     const renserSeats = (row,count=9)=>(
-      <div key={row} className='flex gap-2 mt-2 '>
+      <div key={row} className='flex gap-2 md:mt-2  '>
         <div>
            { Array.from({length:count}, (_,i)=>{
             const seatId = `${row}${i+1}`;
             return(
-              <button onClick={()=>setselectedSeats(seatId)} className={`h-8 w-8 ml-2 rounded border border-primary/60 cursor-pointer gap-2 ${selectedSeats.includes(seatId) && "bg-primary text-white"}`}>
+              <button onClick={()=>handleSeadtfunction(seatId)} className={`h-8 w-8 md:ml-2 mr-2 mb-2  rounded border border-primary/60 cursor-pointer gap-2 ${selectedSeats.includes(seatId) && "bg-primary text-white"}`}>
               {seatId}
               </button>
             )
@@ -62,7 +62,7 @@ const SeatsLayout = () => {
            <div>
             {
               show.dateTime[date].map((data)=>
-                <div onClick={()=>setsselectedTime(ioTime(data.time))}  className={`flex  items-center mt-5 gap-2 px-6 py-2 w-max rounded-r-md cursor-pointer  transition hover:bg-primary-dull ${selectedTime === ioTime(data.time) ?"bg-primary":"hover:bg-primary/20"}`}>
+                <div onClick={()=>setsselectedTime(ioTime(data.time))}  className={`flex  items-center mt-5 gap-2 px-6 py-4 md:px-6 md:py-2 w-max rounded-r-md cursor-pointer  transition hover:bg-primary-dull ${selectedTime === ioTime(data.time) ?"bg-primary":"hover:bg-primary/20"}`}>
                   <ClockIcon/>
                 <p>{ioTime(data.time)} </p>
                 </div>
@@ -83,7 +83,18 @@ const SeatsLayout = () => {
                     {groupsRow[0].map(row=>renserSeats(row)) }
                    </div>
                 </div>
+                <div className='grid grid-cols-2 gap-11'>
+                 {
+                  groupsRow.slice(1).map((data,index)=>
+                   <div key={index} className='text-gray-300 text-xs mt-8'>
+                    {data.map(row=>renserSeats(row)) }
+                    </div>
+                  )
+                 }
+                </div>
+                 <button onClick={()=>{navigate("/MyBokking");scrollTo(0,0)}} className='bg-primary  px-5 py-3 mt-40 rounded-full'> Process To CheckOut</button>
           </div>
+         
         </div>
     ) : <div>
         <div>

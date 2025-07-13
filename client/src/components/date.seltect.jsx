@@ -13,6 +13,7 @@ const DateSelted = ({ dataTime, ids }) => {
         }
         else{
        navigate(`/Movies/${id}/${selted}`)
+       scrollTo(0,0)
         }
     }
   return (

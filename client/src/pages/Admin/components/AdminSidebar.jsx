@@ -1,0 +1,54 @@
+
+const Sidebar = () => {
+  const sidebarLinks = [
+
+    { name: "DashBoad", path: "/", },
+
+    { name: "Add Shows", path: "/admin/add-show", },
+
+    { name: "List Shows", path: "/admin/List-Show", },
+
+    { name: "List Bookings", path: "/admin/List-Booking", },
+
+  ];
+
+
+  return (
+
+    <>
+
+      <div className="md:w-64 w-16 border-r h-[550px] text-base border-gray-300 pt-4 flex flex-col transition-all duration-300">
+
+        {sidebarLinks.map((item, index) => (
+
+          <a href={item.path} key={index}
+
+            className={`flex items-center py-3 px-4 gap-3 
+
+                            ${index === 0 ? "border-r-4 md:border-r-[6px] bg-primary/8 border-primary/25 text-indigo-500"
+
+                : " border-white text-gray-700"
+
+              }`
+
+            }
+
+          >
+
+
+
+            <p className="md:block hidden text-amber-50 text-center">{item.name}</p>
+
+          </a>
+
+        ))}
+
+      </div>
+
+    </>
+
+  );
+
+};
+
+export default Sidebar

@@ -10,6 +10,11 @@ import Favorite from './pages/Favorite';
 import Navbar from './components/navbar';
 import Footer from './components/Footer';
 import {Toaster} from "react-hot-toast"
+import Layout from './pages/Admin/Layout';
+import Dashboad from './pages/Admin/Dashboad';
+import AddShow from './pages/Admin/addshow';
+import ListShow from './pages/Admin/ListShow';
+import ListBooking from './pages/Admin/ListBooking';
 
 function App() {
   const isAdmin = useLocation().pathname.startsWith("/admin")
@@ -27,10 +32,17 @@ function App() {
         <Route path='/Movies/:id/:date' element={<SeatsLayout/>} />
         <Route path='/MyBokking' element={<MyBokking/>} />
         <Route path='/Favorite' element={<Favorite/>} />
+      <Route path='/admin/*' element={<Layout/>} >
+        <Route index element ={<Dashboad/>}/>
+        <Route  path ="add-show" element ={<AddShow/>}/>
+        <Route  path="List-Show" element ={<ListShow/>}/>
+        <Route  path="List-Booking" element ={<ListBooking/>}/>
+        </Route>
       </Routes>
-     {
-      isAdmin ? null: <Footer/>
+     {  
+      !isAdmin && <Footer/>
      }
+     
     </div>
   )
 }
