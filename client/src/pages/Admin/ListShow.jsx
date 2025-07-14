@@ -1,9 +1,13 @@
 import React from 'react'
+import Text from './components/text'
 
 const ListShow = () => {
   return (
     <div>
-      <h1>ListShow</h1>
+         <div className=''>
+      <Text text2="ListShow"/>
+    <h1> ListBooking </h1>
+    </div>
     </div>
   )
 }
