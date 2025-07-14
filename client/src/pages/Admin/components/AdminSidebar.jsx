@@ -25,7 +25,7 @@ const Sidebar = () => {
 
     <>
 
-      <div className="md:w-64 w-16 border-r items-center h-[550px]  items-centertext-base border-gray-300 pt-4 flex flex-col transition-all duration-300">
+      <div className="md:w-64 w-16 border-r items-center h-[550px]  items-centertext-base h-screen border-gray-300 pt-4 flex flex-col transition-all duration-300">
         <div className="w-full p-5 flex flex-col justify-center items-center border-b-2 border-primary/30 ">
           <div className="bg-red-400 w-25 h-25 rounded-full overflow-hidden ">
             <img src={assets.profile} alt="" className="w-full " />
