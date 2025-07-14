@@ -32,10 +32,17 @@ const AddShow = () => {
        
     })
   }
-  console.log(dataTimeSelection)
   const removeDate = (date,time) => {
    setdataTimeSelection((prev)=>{
-    
+     const filtertime = prev[date].filter((t)=> t!== time);
+     console.log(prev[date])
+     if(filtertime.length === 0){
+      const {[date]:_, ...rest} = prev;
+      return rest
+     } 
+     return{
+      ...prev,[date]:filtertime
+     }  
    })
   }
   useEffect(() => {
@@ -92,12 +99,23 @@ const AddShow = () => {
           <button onClick={handleDateTimeAdd} className='bg-primary/80 text-xl py-2 px-2 rounded-xl  '>  Add Show </button>
         </div>
         <div className='p-2'>
-          <label className='text-sm text-gray-300'>Selected Date-Time</label>
-          <p>24/01/2005</p>
+          {
+          Object.keys(dataTimeSelection).length >0 && (
+            <div>
+              <label className='text-sm text-gray-300'>Selected Date-Time</label>
+              {
+                Object.entries(dataTimeSelection).map(([date,time])=>
+              <>
+              <p className='mt-1'>{date}</p>
           <div className='border-2 border-primary w-30 justify-between mt-2 rounded-[2px] p-2 flex'>
-            5.00 pm
-            <Delete onClick={removeDate} className='text-primary' />
-          </div>
+           {time}
+            <Delete onClick={()=>removeDate(date,time)} className='text-primary' />
+          </div></>
+              )
+              }
+              </div>
+          )
+          }
         </div>
       </div>
       <button className='bg-primary text-xl py-2 px-2 rounded-xl  mt-5'>  Add Show </button>
