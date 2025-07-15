@@ -9,8 +9,7 @@ const syncUserLoginData = inngest.createFunction(
   { event: "clerk/user.created" },
   async ({ event }) => {
     const { id, email_addresses, image_url, phone_numbers } = event.data;
-    console.log(event.data);
-
+    console.log("User Created Event:", event.data);
     await User.create({
       id,
       email: email_addresses?.[0]?.email_address || "",
