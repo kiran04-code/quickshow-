@@ -13,7 +13,7 @@ const synsUserlogindata = inngest.createFunction(
         const userData = await User.create({
             id: id,
             email: email_adress[0].email_adress,
-            Phone: phone_numbers[0],
+            Phone: phone_numbers[0].phone_number,
             image: image_Url
         })
         console.log(userData)
@@ -38,7 +38,7 @@ const SynforUpdateUser = inngest.createFunction(
             {
                 id: id,
                 email: email_adress[0].email_adress,
-                Phone: phone_numbers[0],
+                Phone: phone_numbers[0].phone_number,
                 image: image_Url
             }
             , { new: true })
