@@ -22,7 +22,7 @@ const syncUserLoginData = inngest.createFunction(
 // Delete user when Clerk user is deleted
 const syncUserDelete = inngest.createFunction(
   { id: "delete-user-with-clerk" },
-  { event: "wclerk/user.deleted" },
+  { event: "clerk/user.deleted" },
   async ({ event }) => {
     const { id } = event.data;
     await User.findOneAndDelete({ id });
@@ -35,7 +35,7 @@ const syncUserUpdate = inngest.createFunction(
   { event: "clerk/user.updated" },
   async ({ event }) => {
     const { id, email_addresses, image_url, phone_numbers } = event.data;
-
+    
     await User.findOneAndUpdate(
       { id },
       {
