@@ -29,7 +29,12 @@ app.get('/protected', requireAuth(), async (req, res) => {
   const user = await clerkClient.users.getUser(userId)
   return res.json({ user })
 })
-app.use("/api/inngest", serve(inngest, functions, { verifySignature: false }));
+app.use("/api/inngest", serve({
+  client: inngest,
+  functions,
+  verifySignature: false,  // Important if not using signing key
+}));
+
 
 app.listen(Port,(req,res)=>{
     console.log(`Server is Runing on Port http://localhost:${Port}`)
