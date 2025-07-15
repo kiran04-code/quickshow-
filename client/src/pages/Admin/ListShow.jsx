@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Text from './components/text'
+import Text from './components/Text'
 import Loading from '../../components/Loading'
 import { dummyShowsData } from '../../assets/assets'
 import DateFormate from '../../lib/DateFormate'

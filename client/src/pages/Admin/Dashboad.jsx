@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { ChartLineIcon, IndianRupee,StarIcon, IndianRupeeIcon, PlayCircleIcon, UsersIcon } from 'lucide-react'
 import { dummyDashboardData } from '../../assets/assets'
 import Loading from '../../components/Loading'
-import Text from './components/text'
+import Text from './components/Text'
 import BlurCircle from '../../components/Reused'
 import DateFormate from '../../lib/DateFormate'
 
