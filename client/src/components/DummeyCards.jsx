@@ -1,7 +1,7 @@
 import { StarIcon } from 'lucide-react'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import timeFirmater from '../lib/TIME.JS'
+import timeFirmater from '../lib/time'
 const DummeyCards = ({movies}) => {
 const navigate = useNavigate()
   return (
