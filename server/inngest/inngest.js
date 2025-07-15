@@ -1,6 +1,6 @@
 import { verifyToken } from "@clerk/express";
 import { Inngest } from "inngest";
-import User from "../model/user";
+import User from "../model/user.js";
 export const inngest = new Inngest({ id: "Movies-Ticket-app" });
 // inngenst Function to add data in mongodb!
 
