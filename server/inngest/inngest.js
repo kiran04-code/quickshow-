@@ -6,7 +6,7 @@ export const inngest = new Inngest({ id: "Movies-Ticket-app" });
 // Create user when Clerk user is created
 const syncUserLoginData = inngest.createFunction(
   { id: "create-user-with-clerk" },
-  { event: "clerk/user.created" },
+  { event: "webhook-integration/user.created" },
   async ({ event }) => {
     const { id, email_addresses, image_url, phone_numbers } = event.data;
     console.log(event.data);
@@ -23,7 +23,7 @@ const syncUserLoginData = inngest.createFunction(
 // Delete user when Clerk user is deleted
 const syncUserDelete = inngest.createFunction(
   { id: "delete-user-with-clerk" },
-  { event: "clerk/user.deleted" },
+  { event: "webhook-integration/user.deleted" },
   async ({ event }) => {
     const { id } = event.data;
     await User.findOneAndDelete({ id });
@@ -33,7 +33,7 @@ const syncUserDelete = inngest.createFunction(
 // Update user when Clerk user is updated
 const syncUserUpdate = inngest.createFunction(
   { id: "update-user-with-clerk" },
-  { event: "clerk/user.updated" },
+  { event: "webhook-integration/user.updated" },
   async ({ event }) => {
     const { id, email_addresses, image_url, phone_numbers } = event.data;
 
