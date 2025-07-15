@@ -1,27 +1,18 @@
-import { verifyToken } from "@clerk/express";
+
 import { Inngest } from "inngest";
 import User from "../model/user.js";
 export const inngest = new Inngest({ id: "Movies-Ticket-app" });
 // inngenst Function to add data in mongodb!
 
-const helloWorld = inngest.createFunction(
-    { id: "hello-world" },
-    { event: "test/hello.world" },
-    async ({ event, step }) => {
-        await step.sleep("wait-a-moment", "1s");
-        return { message: `Hello ${event.data.email}!` };
-    },
-)
-
 const synsUserlogindata = inngest.createFunction(
     { id: "create-user-with-clerk" },
     { event: "clerk/user.created" },
     async ({ event }) => {
-        const { id, email_adress, image_Url, Phone } = event.data
+        const { id, email_adress, image_Url, phone_numbers } = event.data
         const userData = await User.create({
             id: id,
             email: email_adress[0].email_adress,
-            Phone: Phone,
+            Phone: phone_numbers,
             image: image_Url
         })
         console.log(userData)
@@ -41,12 +32,12 @@ const SynforUpdateUser = inngest.createFunction(
     { id: "upadte-user-with-clerk" },
     { event: "clerk/user.updated" },
     async ({ event }) => {
-        const { email_adress, image_Url, Phone } = event.data
+        const { email_adress, image_Url, phone_numbers } = event.data
         await User.findByIdAndUpdate(id,
             {
                 id: id,
-                email: email_adress[0].email_adress,
-                Phone: Phone,
+                email: email_adress,
+                Phone: phone_numbers[0].email_adress,
                 image: image_Url
             }
             , { new: true })
