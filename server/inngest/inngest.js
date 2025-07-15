@@ -50,7 +50,7 @@ const syncUserUpdate = inngest.createFunction(
 );
 
 // Export all functions
-export const    functions = [
+export const functions = [
   syncUserLoginData,
   syncUserDelete,
   syncUserUpdate

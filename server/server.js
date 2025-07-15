@@ -29,7 +29,7 @@ app.get('/protected', requireAuth(), async (req, res) => {
   const user = await clerkClient.users.getUser(userId)
   return res.json({ user })
 })
-app.use("/api/inngest", serve(inngest, functions));
+app.use("/api/inngest", serve({ client: inngest, functions }));
 app.listen(Port,(req,res)=>{
     console.log(`Server is Runing on Port http://localhost:${Port}`)
 })  
