@@ -10,13 +10,12 @@ const synsUserlogindata = inngest.createFunction(
     async ({ event }) => {
         const { id, email_adress, image_Url, phone_numbers } = event.data
         console.log(event.data)
-        const userData = await User.create({
+         await User.create({
             id: id,
             email: email_adress[0].email_adress,
             Phone: phone_numbers[0].phone_number,
             image: image_Url
         })
-        console.log(userData)
     }
 )
 

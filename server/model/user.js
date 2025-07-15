@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
         require:true
     },
     image:{
-        type:Number,
+        type:String,
         require:true
     },
     email:{
