@@ -18,10 +18,7 @@ const userSchema = new mongoose.Schema({
         require:true
     },
 
-    email:{
-        type:String,
-        require:true
-    }
+  
 })
 
 const User = mongoose.model("users",userSchema)
