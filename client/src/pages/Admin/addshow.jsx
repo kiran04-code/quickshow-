@@ -4,6 +4,7 @@ import Loading from '../../components/Loading'
 import { dummyShowsData } from '../../assets/assets'
 import { BackpackIcon, RemoveFormatting, StarIcon, Delete } from 'lucide-react'
 import ConvertInK from '../../lib/K'
+import toast from 'react-hot-toast'
 
 const AddShow = () => {
   const currancy = import.meta.env.VITE_CURRECY
@@ -13,7 +14,6 @@ const AddShow = () => {
   const [dateTimeInput, setdateTimeInput] = useState("")
   const [showPrice, setShowPrice] = useState("")
   const [loading, setLoading] = useState(true)
-  console.log(showPrice)
   const getdataFilms = () => {
     setShow(dummyShowsData)
     setLoading(false)
@@ -27,21 +27,23 @@ const AddShow = () => {
       const times = prev[date] || []
       if (!times.includes(time)) {
         return { ...prev, [date]: [...times, time] }
+      }else{
+        toast("Same time not Valid Again")
       }
       return prev;
        
     })
   }
-  const removeDate = (date,time) => {
+  const handleremoveDate = (date,time) => {
    setdataTimeSelection((prev)=>{
-     const filtertime = prev[date].filter((t)=> t!== time);
-     console.log(prev[date])
-     if(filtertime.length === 0){
-      const {[date]:_, ...rest} = prev;
-      return rest
+     const filtertime = prev[date].filter((t)=> t !== time);
+     if(filtertime.length !== 0 || filtertime.length === 0 ){
+      const { [date]: _, ...rest} = prev;
+      return rest;
      } 
      return{
-      ...prev,[date]:filtertime
+      ...prev,
+      [date]:filtertime,
      }  
    })
   }
@@ -109,7 +111,7 @@ const AddShow = () => {
               <p className='mt-1'>{date}</p>
           <div className='border-2 border-primary w-30 justify-between mt-2 rounded-[2px] p-2 flex'>
            {time}
-            <Delete onClick={()=>removeDate(date,time)} className='text-primary' />
+            <Delete onClick={()=>handleremoveDate(date,time)} className='text-primary cursor-pointer' />
           </div></>
               )
               }
