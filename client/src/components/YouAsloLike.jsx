@@ -1,6 +1,6 @@
 import React from 'react'
 import { dummyShowsData } from '../assets/assets';
-import timeFirmater from '../lib/TIME.JS';
+import timeFirmater from '../lib/time';
 import { StarIcon } from 'lucide-react'
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/auth';
