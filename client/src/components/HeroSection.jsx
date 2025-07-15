@@ -9,15 +9,15 @@ const HeroSection = () => {
     <div className='flex flex-col  justify-center gap-5 px-6 md:px-6 lg:px-36 bg-[url("/backgroundImage.png")] bg-cover bg-center h-screen'>
       <img src={assets.marvelLogo} alt="" className='max-w-50 lg:w-55 mt-20' />
       <h1 className='text-5xl md:text-[100px] md:leading-23 font-bold'> <span className='text-primary'>Gua</span>rdians <br />of the Gala<span className='text-primary'>xy</span></h1>
-      <div className='flex items-center gap-5 text-gray-300'>
-          <span className='flex gap-2 justify-center items-center'>
-            Action | Adventure | sci-fi   </span>
+      <div className='flex items-center gap-1 text-gray-300 '>
+          <span className='flex gap-1 justify-center items-center text-nowrap'>
+            Action | Adventure | sci-fi</span>
             <div className='flex gap-1 justify-center items-center'>
                 <Calendar className='w-4.5 h-4.5 '/>
                <p> 2025</p>
             </div>
-            <div className='flex gap-1justify-center items-center'>
-                <ClockIcon className='w-4.5 h-4.5 '/> 2h 8m
+            <div className='flex gap-1 justify-center items-center'>
+                <ClockIcon className='w-4.5 h-4.5 '/> <p className='text-nowrap'>2h 8m</p>
             </div>
            
       </div>

@@ -39,15 +39,15 @@ const Navbar = () => {
               </button> */}
     
                {
-                user ? <UserButton>
-                    <UserButton.MenuItems>
-                        <UserButton.Action label='MY-booking' onClick={()=>naviagete("/MyBokking")}  labelIcon={<TicketPlus width={15} />}/>
+                user ? <UserButton >
+                    <UserButton.MenuItems >
+                        <UserButton.Action  label='MY-booking' onClick={()=>naviagete("/MyBokking")}  labelIcon={<TicketPlus width={15} />}/>
                     </UserButton.MenuItems>
                 </UserButton>: <button onClick={openSignIn} className='px-4 py-2 sm:px-7 mr-2 sm:py-2 bg-primary hover:bg-primary-dull transition rounded-full font-medium'>Login</button>
                }
             </div>
 
-            <MenuIcon onClick={()=>setIsOpen(!isopen)} className='mx-md:ml-4 md:hidden w-8 h-8 cursor-pointer' />
+            <MenuIcon onClick={()=>setIsOpen(!isopen)} className='mx-md:ml-2 ml-3 md:hidden w-8 h-8 cursor-pointer' />
         </div>
     )
 }
