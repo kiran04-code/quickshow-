@@ -1,10 +1,10 @@
 import React from 'react'
 import { dummyShowsData } from '../assets/assets';
-
+import timeFirmater from '../lib/time.js';
 import { StarIcon } from 'lucide-react'
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/auth';
-import timeFirmater from '../lib/time.js';
+
 import BlurCircle from '../components/Reused';
 
 

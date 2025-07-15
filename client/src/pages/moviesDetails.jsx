@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { dummyCastsData, dummyDateTimeData, dummyShowsData } from '../assets/assets'
-import timeFirmater from '../lib/TIME.JS'
+import timeFirmater from '../lib/time.js';
 import BlurCircle from '../components/Reused'
 import { PlayIcon, StarIcon, TicketIcon, Heart } from 'lucide-react'
 import VideoModal from '../components/videoModel'
