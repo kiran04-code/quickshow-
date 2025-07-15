@@ -1,50 +1,57 @@
-
 import { Inngest } from "inngest";
 import User from "../model/user.js";
+
 export const inngest = new Inngest({ id: "Movies-Ticket-app" });
-// inngenst Function to add data in mongodb!
 
-const synsUserlogindata = inngest.createFunction(
-    { id: "create-user-with-clerk" },
-    { event: "clerk/user.created" },
-    async ({ event }) => {
-        const { id, email_adress, image_Url, phone_numbers } = event.data
-        console.log(event.data)
-         await User.create({
-            id: id,
-            email: email_adress[0].email_adress,
-            Phone: phone_numbers[0].phone_number,
-            image: image_Url
-        })
-    }
-)
+// Create user when Clerk user is created
+const syncUserLoginData = inngest.createFunction(
+  { id: "create-user-with-clerk" },
+  { event: "clerk/user.created" },
+  async ({ event }) => {
+    const { id, email_addresses, image_url, phone_numbers } = event.data;
+    console.log(event.data);
 
-const SynforDeltedTheUser = inngest.createFunction(
-    { id: "delete-user-with-clerk" },
-    { event: "clerk/user.deleted" },
-    async ({ event }) => {
-        const { id } = event.data
-        await User.findByIdAndUpdate(id)
-    }
-)
+    await User.create({
+      id,
+      email: email_addresses?.[0]?.email_address || "",
+      Phone: phone_numbers?.[0]?.phone_number || "",
+      image: image_url || "",
+    });
+  }
+);
 
-const SynforUpdateUser = inngest.createFunction(
-    { id: "upadte-user-with-clerk" },
-    { event: "clerk/user.updated" },
-    async ({ event }) => {
-        const { email_adress, image_Url, phone_numbers } = event.data
-        await User.findByIdAndUpdate(id,
-            {
-                id: id,
-                email: email_adress[0].email_adress,
-                Phone: phone_numbers[0].phone_number,
-                image: image_Url
-            }
-            , { new: true })
-    }
-)
+// Delete user when Clerk user is deleted
+const syncUserDelete = inngest.createFunction(
+  { id: "delete-user-with-clerk" },
+  { event: "clerk/user.deleted" },
+  async ({ event }) => {
+    const { id } = event.data;
+    await User.findOneAndDelete({ id });
+  }
+);
+
+// Update user when Clerk user is updated
+const syncUserUpdate = inngest.createFunction(
+  { id: "update-user-with-clerk" },
+  { event: "clerk/user.updated" },
+  async ({ event }) => {
+    const { id, email_addresses, image_url, phone_numbers } = event.data;
+
+    await User.findOneAndUpdate(
+      { id },
+      {
+        email: email_addresses?.[0]?.email_address || "",
+        Phone: phone_numbers?.[0]?.phone_number || "",
+        image: image_url || "",
+      },
+      { new: true }
+    );
+  }
+);
+
+// Export all functions
 export const functions = [
-    synsUserlogindata,
-    SynforDeltedTheUser,
-    SynforUpdateUser
+  syncUserLoginData,
+  syncUserDelete,
+  syncUserUpdate
 ];
