@@ -1,41 +1,47 @@
-import express from "express"
-const app = express()
-import {config} from "dotenv"
-import { conntecMongose } from "./config/db.js"
-import { clerkMiddleware,getAuth,clerkClient,requireAuth } from '@clerk/express'
+import express from "express";
+import { config } from "dotenv";
+import cors from "cors";
 import { serve } from "inngest/express";
-import { inngest, functions } from "./inngest/inngest.js"
-import cors from "cors"
-config()
-const Port  = process.env.PORT || 6010
-app.use(express.json())
-app.use(express.urlencoded({extended:true}))
-app.use(clerkMiddleware())
+import { inngest, functions } from "./inngest/inngest.js";
+import { conntecMongose } from "./config/db.js";
+import { clerkMiddleware, getAuth, clerkClient, requireAuth } from "@clerk/express";
+import showRoutes from "./Routes/show.js";
+const app = express();
+config();
+
+const Port = process.env.PORT || 6010;
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(clerkMiddleware());
 
 app.use(cors({
-    origin:"http://localhost:5173",
-    credentials:true
-}))
-app.get("/",(req,res)=>{
-  res.send("Wroking Fine The Bankend!")
-})
-conntecMongose(process.env.MONGODB_URI).then(()=>{
-    console.log("Mongodb is Connected")
-}).catch((err)=>{
-    console.log("ERROR",err)
-})
-app.get('/protected', requireAuth(), async (req, res) => {
-  const { userId } = getAuth(req)
-  const user = await clerkClient.users.getUser(userId)
-  return res.json({ user })
-})
-app.use("/api/inngest", serve({
-  client: inngest,
-  functions,
-  verifySignature: false,  // Important if not using signing key
+  origin: "http://localhost:5173",
+  credentials: true
 }));
 
+app.get("/", (req, res) => {
+  res.send("✅ Backend is working!");
+});
 
-app.listen(Port,(req,res)=>{
-    console.log(`Server is Runing on Port http://localhost:${Port}`)
-})  
+// MongoDB connection
+conntecMongose(process.env.MONGODB_URI)
+  .then(() => console.log("✅ MongoDB connected"))
+  .catch((err) => console.log("❌ MongoDB ERROR:", err));
+
+// Protected route test
+app.get("/protected", requireAuth(), async (req, res) => {
+  const { userId } = getAuth(req);
+  const user = await clerkClient.users.getUser(userId);
+  return res.json({ user });
+});
+
+// Inngest webhook route
+app.use("/api/inngest", serve({
+  client: inngest,
+  functions, // ✅ Make sure this is passed correctly
+}));
+app.use("/api/show",showRoutes)
+app.listen(Port, () => {
+  console.log(`🚀 Server is running at http://localhost:${Port}`);
+});
